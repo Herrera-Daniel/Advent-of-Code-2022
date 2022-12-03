@@ -4,16 +4,16 @@
 // const paper = [['B', 'Y'], ['A', 'X'], ['C', 'Z']]
 // const scissors = [['C', 'Z'], ['B', 'Y'], ['A', 'X']]
 
-const myPlay = {
+const perms = {
     // win (Z) = 6 draw (Y) = 3 lose (X) = 0
     ['A X']: {
-        result: 4
+        result: 3
     },
     ['A Y']: {
-        result: 8
+        result: 4
     },
     ['A Z']: {
-        result: 3
+        result: 8
     },
     ['B X']: {
         result: 1
@@ -25,13 +25,13 @@ const myPlay = {
         result: 9
     },
     ['C X']: {
-        result: 7
-    },
-    ['C Y']: {
         result: 2
     },
-    ['C Z']: {
+    ['C Y']: {
         result: 6
+    },
+    ['C Z']: {
+        result: 7
     }
 
 }
@@ -46,7 +46,7 @@ const dayTwo = () => {
     array.forEach((a: string) => {
         console.log(a);
         // @ts-ignore
-        sum += myPlay[a].result
+        sum += perms[a].result
     })
     console.log(sum);
 
