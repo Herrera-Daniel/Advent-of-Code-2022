@@ -1,30 +1,33 @@
 // Day 3
 
-const dayThree = () => {
+const dayThree = (): void => {
 
     const fs = require('fs');
 
     const input = fs.readFileSync('input/daythree/daythree.txt', 'ascii');
 
-    const array = input.split('\r\n');
+    const inputArray = input.split('\r\n');
 
     let sum = 0;
-    array.forEach((a: string) => {
-        const first = a.substring(0, a.length / 2);
-        const second = a.substring(a.length / 2);
+    inputArray.forEach((a: string, i: number) => {
 
-        first.split('').forEach((f: string, index: number) => {
-            if (second.includes(f) && !first.substring(0, index).includes(f)) {
-                if (f.charCodeAt(0) - 96 >= 0) {
-                    sum += f.charCodeAt(0) - 96;
-                    return;
+        if ((i + 1) % 3 === 0) {
+            inputArray[i].split('').forEach((s: string, si: number) => {
+                if (inputArray[i - 1].includes(s) && inputArray[i - 2].includes(s) && !inputArray[i].substring(0, si).includes(s)) {
+                    if (s.charCodeAt(0) - 96 >= 0) {
+                        console.log(s);
+                        sum += s.charCodeAt(0) - 96;
+                        return;
+                    }
+                    if (s.charCodeAt(0) - 38 >= 0) {
+                        console.log(s);
+                        sum += s.charCodeAt(0) - 38;
+                        return;
+                    }
                 }
-                if (f.charCodeAt(0) - 38 >= 0) {
-                    sum += f.charCodeAt(0) - 38;
-                    return;
-                }
-            }
-        });
+            })
+        }
+
     });
     console.log(sum);
 };
