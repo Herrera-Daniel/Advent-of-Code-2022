@@ -9,8 +9,8 @@ const daySix = () => {
 
     let marker = 0;
     input.split('').filter(a => !a.includes('\r') && !a.includes('\n')).forEach((a: string, i: number) => {
-        if (i > 2) {
-            const search = input.substring(i - 3, i + 1);
+        if (i > 13) {
+            const search = input.substring(i - 13, i + 1);
             if (!/(.).*\1/.test(search) && marker === 0) {
                 marker = i + 1;
             }
